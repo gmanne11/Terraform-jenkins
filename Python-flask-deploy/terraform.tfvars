@@ -1,0 +1,9 @@
+public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDxIQ14HcN/hW93JPTTeaJt3pdRLl8QHVSs4zp0z6FhuevvIw7OPaAzRj0LOgbMNgw20ZUP4vC13WBlnkaet3wwCAO2yTjdKjwEn52TWIyXn3WrmfcL0Nk7p4yX2ogJMQ8E291trXp9x0BPlX9zFuggFbeyjM2WRLFdPcdb6JI+dtFWsx2cuzj4fMBo761IYTkgUp9RkqEbN3lrpA/DqwektkV3rVqywdsPTWYU0V/SzYujgCIBAUORYaKsn4MUoYiQa8m3UWV/auz/sJqVypfftNZ/IS42X37HauRxudFnbzjeAPejLQ7yl+efM5SabgbxtCbiOf2IQp/+AbcPTuL"
+bucket_name = "python-flask-remote-state-bucket"
+name = "python-flask-s3-bucket"
+vpc_cidr = "11.0.0.0/16"
+vpc_name = "python-flask-ca-central-1-vpc"
+cidr_public_subnet = ["11.0.1.0/24","11.0.2.0/24"]
+cidr_private_subnet = ["11.0.3.0/24","11.0.4.0/24"]
+az = ["ca-central-1a","ca-centralb"]
+ami_id = "ami-0c9f6749650d5c0e3"
