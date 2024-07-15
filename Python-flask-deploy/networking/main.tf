@@ -92,10 +92,6 @@ resource "aws_route_table_association" "rtba1" {
 # Private route table 
 resource "aws_route_table" "python_flask_private_rtb" {
     vpc_id = aws_vpc.python_flask_vpc.id 
-    route {
-        cidr_block = aws_vpc.python_flask_vpc.cidr_block
-
-    }
     tags = {
       Name = "rtb-private-subnet"
     }      
