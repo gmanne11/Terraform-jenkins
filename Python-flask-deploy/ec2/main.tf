@@ -20,7 +20,7 @@ output "python_flask_ec2_instance_id" {
 resource "aws_instance" "python_flask_node" {
     ami = var.ami_id
     instance_type = var.instance_type
-    key_name = data.aws_key_pair.python_flask_public_key #I'm using my existing keypair
+    key_name = data.aws_key_pair.python_flask_public_key.key_name #I'm using my existing keypair
     tags = {
       Name = var.instance_name
     }
