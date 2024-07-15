@@ -1,3 +1,9 @@
+module "S3" {
+    source = "./S3"
+    jenkins_bucket_name = var.jenkins_bucket_name
+    name = var.name
+}
+
 module "networking" {
   source = "./networking"
   vpc_cidr = var.vpc_cidr
