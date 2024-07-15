@@ -42,7 +42,7 @@ module "ec2" {
     source = "./ec2"
     instance_name = "python_flask_node"
     ami_id = var.ami_id 
-    subnet_id = tolist(module.networking.python_flask_public_subnet_cidr_block)[0]
+    subnet_id = tolist(module.networking.python_flask_public_subnets)[0]
     enable_public_ip_python = true 
     public_key = var.public_key
     ec2_sg_python_api_id = module.security_group.ec2_sg_python_api_id
@@ -80,7 +80,7 @@ module "alb" {
 module "rds" {
     source = "./rds"
     db_subnet_group_name = "python-flask-rds-subnet-group"
-    subnet_groups = tolist(module.networking.python_flask_private_subnets)
+    subnet_groups = tolist(module.networking.python_flask_private_subnets)[0]
     mysql_db_identifier = "mydb"
     mysql_username = "dbuser"
     mysql_password = "dbpassword"
