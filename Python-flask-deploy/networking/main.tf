@@ -93,7 +93,7 @@ resource "aws_route_table_association" "rtba1" {
 resource "aws_route_table" "python_flask_private_rtb" {
     vpc_id = aws_vpc.python_flask_vpc.id 
     route {
-        cidr_block = "0.0.0.0/0"
+        cidr_block = aws_vpc.python_flask_vpc.cidr_block
 
     }
     tags = {
