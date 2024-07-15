@@ -80,7 +80,7 @@ module "alb" {
 module "rds" {
     source = "./rds"
     db_subnet_group_name = "python-flask-rds-subnet-group"
-    subnet_groups = tolist(module.networking.python_flask_private_subnets)[0]
+    subnet_ids = tolist(module.networking.python_flask_private_subnets)[0]
     mysql_db_identifier = "mydb"
     mysql_username = "dbuser"
     mysql_password = "dbpassword"
