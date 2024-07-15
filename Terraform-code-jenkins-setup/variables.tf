@@ -33,3 +33,13 @@ variable "public_key" {
     type = string 
     description = "Public key for EC2 instance"
 }
+
+variable "jenkins_bucket_name" {
+    type = string
+    description = "jenkins s3 bucket name"
+}
+
+variable "name" {
+    type = string 
+    description = "jenkins bucket tag name"
+}

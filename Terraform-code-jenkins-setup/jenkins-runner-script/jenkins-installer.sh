@@ -2,7 +2,7 @@
 
 # This script installs java for jenkins to run, installing jenkins and then terraform.
 sudo apt-get update
-yes | sudo apt install openjdk-11-jdk-headless
+sudo apt install openjdk-11-jdk-headless -y
 echo "Waiting for 30 seconds before installing the jenkins package..."
 sleep 30
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
@@ -12,6 +12,8 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 yes | sudo apt-get install jenkins
+sudo systemctl enable jenkins 
+sudo systemctl start jenkins 
 sleep 30
 echo "Waiting for 30 seconds before installing the Terraform..."
 wget https://releases.hashicorp.com/terraform/1.6.5/terraform_1.6.5_linux_386.zip

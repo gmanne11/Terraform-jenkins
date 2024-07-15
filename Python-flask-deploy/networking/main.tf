@@ -69,7 +69,7 @@ resource "aws_internet_gateway" "python_flask_igw" {
     }
 }
 
-# Setup Routetable 
+# Setup public Routetable 
 resource "aws_route_table" "python_flask_public_rtb" {
     vpc_id = aws_vpc.python_flask_vpc.id 
     route {

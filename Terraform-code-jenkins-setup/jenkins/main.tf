@@ -5,7 +5,6 @@ variable "subnet_id" {}
 variable "sg_jenkins" {}
 variable "enable_public_ip_jenkins" {}
 variable "user_data_install_jenkins" {}
-variable "public_key" {}
 
 output "ec2_public_ip" {
     value = aws_instance.jenkins_node.public_ip
@@ -30,10 +29,3 @@ resource "aws_instance" "jenkins_node" {
 
     user_data = var.user_data_install_jenkins
 }
-
-/*# Keypair to launch jenkins node
-data "aws_key_pair" "jenkins_public_key" {
-    key_name = "testing"
-    public_key = var.public_key
-  
-}*/

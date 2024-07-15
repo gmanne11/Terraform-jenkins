@@ -12,8 +12,10 @@ module "security_groups" {
     vpc_id = module.networking.vpc_id
     ec2_jenkins_sg = "Allow port 8080 for jenkins"
     ec2_sg = "SG for ec2 to enable SSH,HTTP,access"
-  
+    sg_bastion_host = "Allow SSH(22) access from anywhere for bastion host"
+    sg_bastion_to_jenkins = "Allow SSH(22) access from bastion to jenkins node"
 }
+    
 
 module "jenkins" {
     source = "./jenkins"
@@ -21,12 +23,24 @@ module "jenkins" {
     ami_id = var.ami_id
     instance_type = "t2.medium"
     subnet_id = tolist(module.networking.private_subnets)[0]
-    sg_jenkins = [ module.security_groups.ec2_sg_id, module.security_groups.ec2_jenkins_sg_id ]
-    enable_public_ip_jenkins = true
+    sg_jenkins = [ module.security_groups.ec2_sg_id, module.security_groups.ec2_jenkins_sg_id, module.security_groups.sg_bastion_to_jenkins_id ]
+    enable_public_ip_jenkins = false
     user_data_install_jenkins = file("./jenkins-runner-script/jenkins-installer.sh")
-    public_key = var.public_key
-  
+
+    depends_on = [ module.security_groups ]
+
 }
+
+module "bastion_host" {
+    source = "./bastion-host"
+    ami_id = var.ami_id
+    subnet_id = tolist(module.networking.public_subnets)[0]
+    sg_bastion_host = [ module.security_groups.sg_bastion_host_id ]
+    enable_public_ip_bastion = true 
+    bastion_instance_name = "bastion-host"
+    bastion_instance_type = "t2.micro"
+}
+
 
 module "lb_target_group" {
     source = "./load-balancer-target-group"

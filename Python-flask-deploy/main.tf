@@ -6,6 +6,7 @@ variable "cidr_public_subnet" {}
 variable "cidr_private_subnet" {}
 variable "az" {}
 variable "ami_id" {}
+variable "dynamodb_table_name" {}
   
 
 
@@ -13,6 +14,9 @@ module "S3" {
     source = "./S3"
     bucket_name = var.bucket_name 
     name = var.name
+    dynamodb_table_name = var.dynamodb_table_name
+    read_capacity = 5
+    write_capacity = 5
 }
 
 module "networking" {
