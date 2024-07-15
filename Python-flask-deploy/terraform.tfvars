@@ -5,6 +5,6 @@ vpc_cidr = "11.0.0.0/16"
 vpc_name = "python-flask-ca-central-1-vpc"
 cidr_public_subnet = ["11.0.1.0/24","11.0.2.0/24"]
 cidr_private_subnet = ["11.0.3.0/24","11.0.4.0/24"]
-az = ["ca-central-1a","ca-centralb"]
+az = ["ca-central-1a","ca-central-1b"]
 ami_id = "ami-0c9f6749650d5c0e3"
 dynamodb_table_name = "s3-dev-bucket-locking"
