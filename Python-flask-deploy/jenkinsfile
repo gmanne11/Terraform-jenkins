@@ -16,7 +16,7 @@ pipeline {
                 // Clone the Git repository
                 git branch: 'main',
                     url: 'https://github.com/gmanne11/Terraform-jenkins.git'
-
+            
                 sh "ls -lart"
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         stage('Terraform Init') {
                     steps {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]){
-                            dir('Python-flask-deploy ') {
+                            dir('Python-flask-deploy') {
                             sh 'echo "=================Terraform Init=================="'
                             sh 'terraform init'
                         }
@@ -52,7 +52,7 @@ pipeline {
                 script {
                     if (params.APPLY_TERRAFORM) {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]){
-                            dir('Python-flask-deploy ') {
+                            dir('Python-flask-deploy') {
                                 sh 'echo "=================Terraform Apply=================="'
                                 sh 'terraform apply -auto-approve'
                             }
