@@ -44,7 +44,6 @@ module "ec2" {
     ami_id = var.ami_id 
     subnet_id = tolist(module.networking.python_flask_public_subnets)[0]
     enable_public_ip_python = true 
-    public_key = var.public_key
     ec2_sg_python_api_id = module.security_group.ec2_sg_python_api_id
     ec2_sg_id = module.security_group.ec2_sg_id
     instance_type = "t2.micro"

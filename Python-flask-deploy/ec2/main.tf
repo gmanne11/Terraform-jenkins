@@ -4,7 +4,6 @@ variable "instance_type" {}
 variable "subnet_id" {}
 variable "enable_public_ip_python" {}
 variable "user_data_install_python" {}
-variable "public_key" {}
 variable "ec2_sg_python_api_id" {}
 variable "ec2_sg_id" {}
 
@@ -21,7 +20,7 @@ output "python_flask_ec2_instance_id" {
 resource "aws_instance" "python_flask_node" {
     ami = var.ami_id
     instance_type = var.instance_type
-    key_name = "testing-ca-central-1" #I'm using my existing keypair
+    key_name = data.aws_key_pair.python_flask_public_key #I'm using my existing keypair
     tags = {
       Name = var.instance_name
     }
@@ -33,8 +32,6 @@ resource "aws_instance" "python_flask_node" {
     user_data = var.user_data_install_python
 }
 
-resource "aws_key_pair" "python_flask_public_key" {
+data "aws_key_pair" "python_flask_public_key" {
     key_name = "testing-ca-central-1"
-    public_key = var.public_key
-  
 }
