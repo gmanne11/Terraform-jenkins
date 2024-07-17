@@ -14,6 +14,7 @@ output "aws_lb_dns_name" {
   value = aws_lb.python_flask_ec2_elb.dns_name
 }
 
+
 #Create ELB for high availabilty and load distribution to our application 
 resource "aws_lb" "python_flask_ec2_elb" {
     name = var.lb_name 

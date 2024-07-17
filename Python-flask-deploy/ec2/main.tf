@@ -6,6 +6,7 @@ variable "enable_public_ip_python" {}
 variable "user_data_install_python" {}
 variable "ec2_sg_python_api_id" {}
 variable "ec2_sg_id" {}
+variable "lb_sg_id" {}
 
 
 output "python_flask_ec2_public_ip" {
@@ -26,7 +27,7 @@ resource "aws_instance" "python_flask_node" {
     }
 
     subnet_id = var.subnet_id 
-    vpc_security_group_ids = [ var.ec2_sg_python_api_id, var.ec2_sg_id ]
+    vpc_security_group_ids = [ var.ec2_sg_python_api_id, var.ec2_sg_id, var.lb_sg_id ]
     associate_public_ip_address = var.enable_public_ip_python
 
     user_data = var.user_data_install_python

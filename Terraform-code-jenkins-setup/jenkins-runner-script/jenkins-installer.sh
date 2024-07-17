@@ -2,7 +2,7 @@
 
 # This script installs java for jenkins to run, installing jenkins and then terraform.
 sudo apt-get update
-sudo apt install openjdk-11-jdk-headless -y
+sudo apt install openjdk-11-jre-headless -y
 echo "Waiting for 30 seconds before installing the jenkins package..."
 sleep 30
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \

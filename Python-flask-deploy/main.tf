@@ -35,6 +35,7 @@ module "security_group" {
     ec2_sg = "SG for EC2 to enable SSH(22) and HTTP(80)"
     public_subnet_cidr_block = tolist(module.networking.python_flask_public_subnet_cidr_block)
     ec2_sg_name_python_api = "SG for EC2 for enabling port 5000"
+    ec2_sg_lb = "SG of load balncer"
 
 }
 
@@ -48,6 +49,7 @@ module "ec2" {
     ec2_sg_id = module.security_group.ec2_sg_id
     instance_type = "t2.micro"
     user_data_install_python = file("./template/ec2_install_python.sh")
+    lb_sg_id = module.security_group.lb_sg_id
   
 }
 
@@ -57,7 +59,6 @@ module "lb_target_group" {
     lb_target_group_port = 5000
     lb_targte_group_protocol = "HTTP"
     vpc_id = module.networking.python_flask_vpc_id
-    ec2_instance_id = module.ec2.python_flask_ec2_instance_id
 }
 
 module "alb" {
