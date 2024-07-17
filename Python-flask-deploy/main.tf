@@ -66,7 +66,7 @@ module "alb" {
     lb_name = "python-flask-app-alb"
     is_external = false
     lb_type = "application"
-    ec2_sg = module.security_group.ec2_sg_id
+    lb_sg = module.security_group.lb_sg_id
     subnet_ids = tolist(module.networking.python_flask_public_subnets)
     lb_target_group_arn = module.lb_target_group.aws_lb_target_group_arn
     lb_target_group_attachment_port = 5000

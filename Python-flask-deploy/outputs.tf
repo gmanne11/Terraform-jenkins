@@ -39,3 +39,8 @@ output "python_flask_s3_bucket" {
     value = module.S3.remote_backend_s3_bucket_name
   
 }
+
+output "lb_sg_id" {
+    value = module.security_group.lb_sg_id
+  
+}

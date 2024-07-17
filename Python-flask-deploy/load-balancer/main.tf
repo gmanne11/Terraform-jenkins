@@ -1,7 +1,7 @@
 variable "lb_name" {}
 variable "is_external" {}
 variable "lb_type" {}
-variable "ec2_sg" {}
+variable "lb_sg" {}
 variable "subnet_ids" {}
 variable "lb_target_group_arn" {}
 variable "lb_target_group_attachment_port" {}
@@ -20,7 +20,7 @@ resource "aws_lb" "python_flask_ec2_elb" {
     name = var.lb_name 
     internal = var.is_external
     load_balancer_type = var.lb_type
-    security_groups = [var.ec2_sg]
+    security_groups = [var.lb_sg]
     subnets = var.subnet_ids
 
     enable_deletion_protection = false
