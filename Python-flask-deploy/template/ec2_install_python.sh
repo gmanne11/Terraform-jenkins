@@ -8,7 +8,7 @@ git clone https://github.com/gmanne11/Terraform-jenkins.git
 sleep 20
 
 # shellcheck disable=SC2164
-cd Python-flask-deploy/flask-app
+cd Terraform-jenkins/Python-flask-deploy/flask-app
 pip3 install -r requirements.txt
 echo 'Waiting for 30 seconds before running the app.py'
 setsid python3 -u app.py &
